@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<main id="main">
+
+    <div class="container">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <form method="POST" action="/subexam">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label for="tid" class="form-label">Name</label>
+                            <input type="text" name="sname" id="tid" class="form-control"  placeholder="Enter Your Name">
+                        </div>
+
+                        {% for x in data %}
+
+                        <div class="mb-3">
+                            <label for="pdetid" class="form-label">Questions</label>
+                            <textarea class="form-control" name="que" id="pdetid" rows="5">{{x.que}}</textarea>
+                        </div>
+
+                        {% endfor %}
+
+                        <div class="mb-3">
+                            <label for="pdetid" class="form-label">Answers</label>
+                            <textarea class="form-control" name="ans" id="pdetid" rows="25"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+
+                                <button class="btn btn-danger" type="submit">Submit</button>
+
+                        </div>
+                
+                
+                    </form>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</main>
+
+{% endblock 'main' %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block 'main' %}
+
+<div class="container1">
+    <div class="row">
+        <div class="col-md-6 my-5 mx-auto"> 
+            <form method="POST"  action="/login">
+                {% csrf_token %}
+                {% if messages %}
+                    {% for message in messages %}
+                    <div>
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="mb-3">
+                   <div class="mx-center">
+                        <h3 style="padding-left: 40px" >Login Page</h3>
+                   </div><br>
+                    <label for="tid" class="form-label"><b>Enter Username</label>
+                    <input type="text" name="uemail" class="form-control" id="tid" placeholder="Enter Your E-mail" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="password"><b>Passward</label>
+                    <input type="password" name="upass" class="form-control" id="sid" placeholder="Enter Your Passward" required>
+                </div>
+
+                <div class="mb-3">
+                    <button class="btn btn-danger"  type="submit" >Login</button>
+                    <a class="btn btn-danger" href="register" role="button">New Registriation</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</main>
+
+{% endblock 'main' %}

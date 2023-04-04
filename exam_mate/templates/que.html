@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block 'main' %}
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                
+                <form action="/que/{{id}}" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="que" class="form-label">Questions</label>
+                        <textarea class="form-control" name="que" id="que" rows="5"></textarea>
+                    </div>
+                
+
+                    <div>
+                        <button class="btn btn-danger" type="submit">Add Question</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock 'main' %}

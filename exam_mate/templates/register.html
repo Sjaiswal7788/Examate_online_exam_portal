@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block 'main' %}
+<div class="container2">
+    <div class="row">
+        <div class="col-md-6 mx-auto"> 
+            <form method="POST"  action="/register">
+                {% csrf_token %}
+                {% if messages %}
+                    {% for message in messages %}
+                    <div>
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="mb-3">
+                   <div class="mx-center">
+                        <h3 style="padding:20px" >Register</h3>
+                   </div>
+                
+
+                <div class="mb-3">
+                    <label for="tid" class="form-label">User Name</label>
+                    <input type="email" name="uemail" class="form-control" id="tid" placeholder="Enter Your E-mail">
+                    {% if erremailmsg %}
+                            <span class="text-danger">Email field cannot be blank</span>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label for="sid" class="form-label">Password</label>
+                    <input type="password" name="upass" class="form-control" id="sid" placeholder="Enter Your Password">
+                {% if errupassmsg %}
+                        <span class="text-danger">password field cannot be blank</span>
+                {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label for="sid" class="form-label">Confirm Password</label>
+                    <input type="password" name="cupass" class="form-control" id="sid" placeholder="Enter Your Password">
+                    {% if errcupassmsg %}
+                    <span class="text-danger">Confirm password field cannot be Blank</span>
+                    {% elif errmismatch %}
+                    <span class="text-danger">Password and Confirm password didn't Matched</span>
+                    {% endif %}
+                </div>
+
+                
+               
+                <div class="mb-3">
+
+                    
+                    <button type="submit" class="btn btn-danger">Register</button>
+                    
+
+    
+
+
+                </div>
+
+
+                {% if msg %}
+                            <span class="text-success">Registriation is Succesfully</span>
+                    {% endif %}
+            </form>
+
+
+
+            
+        </div>
+    </div>
+</div>
+</main>
+
+
+
+
+
+
+{% endblock 'main' %}

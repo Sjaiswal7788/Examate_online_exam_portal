@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 my-5">
+                <a href="/addstudent"><button class="class btn btn-danger">Add Student</button></a>
+            </div><!--End of button-->
+
+            <div class="col-md-10 my-5">
+                <table class="class table">
+                    
+                    <tr>
+                        <th>Sr.no</th>
+                        <th>Name</th>
+                        <th>email</th>
+                        <th>YearOfStudy</th>
+                        <th>Action</th>
+                    </tr>
+                
+                </tablet>
+                {% for x in data %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{x.name}}</td>
+                        
+                        <td>{{x.email}}</td>
+                        {% if x.year == 1 %}
+                        <td>FirstYear</td>
+                        {% elif x.year == 2 %}
+                        <td>SecondYear</td>
+                        {% elif x.year == 3 %}
+                        <td>ThiredYear</td>
+                        {% else %}
+                        <td>FourthYear</td>
+                        {% endif %}
+
+                        <td>
+                            <a href="/sedit/{{x.id}}"><button class="btn btn-warning">Edit</button></a>
+                            <a href="/sdelete/{{x.id}}"><button class="btn btn-danger">Delete</button></a>
+                            
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+                </table>
+            </div><!--End of table-->
+        </div><!--End of row-->
+    </div><!--End of container-->
+
+</main>
+
+
+
+
+{% endblock %}

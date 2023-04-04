@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<main id="main">
+
+    <div class="container">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                {% for x in data %}
+                    <form method="POST" action="/sedit/{{x.id}}">
+                        
+                        {% csrf_token %}
+                        
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label">StudentName</label>
+                            <input type="text" name="name" class="form-control" id="name" value="{{x.name}}" placeholder="Enter Student Name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">StudentEmailId</label>
+                            <input type="email" name="email" class="form-control" id="email" value="{{x.email}}" placeholder="Enter Student E-mail">
+                            {% if erremailmsg %}
+                                    <span class="text-danger">Email field cannot be blank</span>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <select class="form-select" name="year" aria-label="Default select example">
+                                {% if x.year == 1 %}
+                                <option value="1">FirstYear</option>
+                                {% elif x.year == 2 %}
+                                <option value="2">SecondYear</option>
+                                {% elif x.year == 3 %}
+                                <option value="3">ThiredYear</option>
+                                {% else %}
+                                <option value="4">FourthYear</option>
+                                {% endif %}
+
+
+                                <option value="1">FirstYear</option>
+                                <option value="2">SecondYear</option>
+                                <option value="3">ThiredYear</option>
+                                <option value="4">FourthYear</option>
+                              </select>
+                        </div>
+                {% endfor %}
+
+                        <div class="mb-3">
+
+                                <button class="btn btn-danger" type="submit" >Update Student</button>
+
+                        </div>
+                        
+                    </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock 'main' %}

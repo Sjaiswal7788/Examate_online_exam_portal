@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+<main id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 my-5">
+                <a href="/cexam"><button class="class btn btn-danger">Create Exam</button></a>
+            </div><!--End of button-->
+
+            <div class="col-md-10 my-5">
+                <table class="class table">
+                    <tr>
+                        <th>Sr.no</th>
+                        <th>Subject</th>
+                        <!-- <th>Questions</th> -->
+                        <th>ExamDate</th>
+                        <th>Time</th>
+                        <th>YearOfExam</th>
+                        <th>Actions</th>
+                    </tr>
+
+                {% for x in data %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{x.stitle}}</td>
+                        <!-- <td>{{x.que}}</td> -->
+                        <td>{{x.date}}</td>
+                        <td>{{x.time}}</td>
+                        {% if x.year == 1 %}
+                        <td>FirstYear</td>
+                        {% elif x.year == 2 %}
+                        <td>SecondYear</td>
+                        {% elif x.year == 3 %}
+                        <td>ThiredYear</td>
+                        {% else %}
+                        <td>FourthYear</td>
+                        {% endif %}
+
+                        <td>
+                            <a href="/edit/{{x.id}}"><button class="btn btn-warning">Edit</button></a>
+                            <a href="/delete/{{x.id}}"><button class="btn btn-danger">Delete</button></a>
+                            <a href="/que/{{x.id}}"><button class="btn btn-danger">Add Q.</button></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+
+                </table>
+            </div><!--End of table-->
+        </div><!--End of row-->
+    </div><!--End of container-->
+
+</main>
+
+
+
+
+{% endblock %}

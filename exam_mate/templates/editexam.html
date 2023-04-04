@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<main id="main">
+
+    <div class="container">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                {% for x in data %}
+                    <form method="POST" action="/edit/{{x.id}}">
+                        
+                        {% csrf_token %}
+                        
+
+                        <div class="mb-3">
+                            <label for="tid" class="form-label">Subject</label>
+                            <input type="text" name="stitle" class="form-control" id="tid" value="{{x.stitle}}" placeholder="Enter Post Title">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="pdetid" class="form-label">Questions</label>
+                            <textarea class="form-control" name="que" id="pdetid" rows="5">{{x.que}}</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="date" class="form-label">ExamDate:</label>
+                            <!---<textarea class="form-control" name="date" id="date" rows="1">{{x.date}}</textarea>--->
+                            {{x.date}} <input type="date" name="date" value="{{x.date}}">&nbsp;&nbsp;
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="time" class="form-label">Time</label>
+                            <!-- <textarea class="form-control" name="time" id="time" rows="1">{{x.time}}</textarea> -->
+                            {{x.time}} <input type="time" name="time" value="{{x.time}}">
+                        </div>
+
+                        <div class="mb-3">
+                            <select class="form-select" name="year" aria-label="Default select example">
+                                {% if x.year == 1 %}
+                                <option value="1">FirstYear</option>
+                                {% elif x.year == 2 %}
+                                <option value="2">SecondYear</option>
+                                {% elif x.year == 3 %}
+                                <option value="3">ThiredYear</option>
+                                {% else %}
+                                <option value="4">FourthYear</option>
+                                {% endif %}
+
+
+                                <option value="1">FirstYear</option>
+                                <option value="2">SecondYear</option>
+                                <option value="3">ThiredYear</option>
+                                <option value="4">FourthYear</option>
+                              </select>
+                        </div>
+                {% endfor %}
+
+                        <div class="mb-3">
+
+                                <button class="btn btn-danger" type="submit" >Update Post</button>
+
+                        </div>
+                        
+                    </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock 'main' %}

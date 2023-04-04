@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<main id="main">
+
+    <div class="container">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <form method="POST" action="/cexam">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label for="tid" class="form-label">Subject</label>
+                            <input type="text" name="stitle" class="form-control"  placeholder="Enter Subject Name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="pdetid" class="form-label">Questions</label>
+                            <textarea class="form-control" name="que" id="pdetid" rows="5"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="pdetid" class="form-label">ExamDate</label>
+                            <input type="date" name="date" class="form-control" id="tid" rows="1" placeholder="ExamDate">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="pdetid" class="form-label">Time</label>
+                            <input type="Time" name="time" class="form-control" id="tid" rows="1" placeholder="Enter Time">
+                        </div>
+
+                        <div class="mb-3">
+                            <select class="form-select" name="year" aria-label="Default select example">
+                                <option>Select Year</option>
+                                <option value="1">FirstYear</option>
+                                <option value="2">SecondYear</option>
+                                <option value="3">ThiredYear</option>
+                                <option value="4">ForthYear</option>
+                              </select>
+                        </div>
+
+                        <div class="mb-3">
+
+                                <button class="btn btn-danger" type="submit" >Post</button>
+
+                        </div>
+                
+                
+                    </form>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+
+
+{% endblock 'main' %}

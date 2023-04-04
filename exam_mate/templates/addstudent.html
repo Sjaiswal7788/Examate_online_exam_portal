@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+<main id="main">
+
+    <div class="container">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <form method="POST" action="/addstudent">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label for="sname" class="form-label">StudentName</label>
+                            <input type="text" name="name" class="form-control" id="sname" placeholder="Enter Student Name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="semail" class="form-label">StudentEmailId</label>
+                            <input type="email" name="email" class="form-control" id="semail" placeholder="Enter Student E-mail">
+                            {% if erremailmsg %}
+                                    <span class="text-danger">Email field cannot be blank</span>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <select class="form-select" name="year" aria-label="Default select example">
+                                <option>Select Year</option>
+                                <option value="1">FirstYear</option>
+                                <option value="2">SecondYear</option>
+                                <option value="3">ThiredYear</option>
+                                <option value="4">ForthYear</option>
+                              </select>
+                        </div>
+
+                        <div class="mb-3">
+
+                                <button class="btn btn-danger" type="submit">Add student</button>
+
+                        </div>
+                
+                
+                    </form>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+
+
+{% endblock 'main' %}
